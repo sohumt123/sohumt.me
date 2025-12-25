@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ASCIIText from './components/ASCIIText'
 import Sudoku4x4 from './components/Sudoku4x4'
 import Hyperspeed from './components/Hyperspeed'
+import Header from './components/Header'
 
 function App() {
   const [showHyperspeed, setShowHyperspeed] = useState(false)
@@ -16,8 +17,9 @@ function App() {
 
   return (
     <div>
+      <Header />
       {/* ASCII Text Section */}
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', paddingTop: '64px' }}>
         <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
           <ASCIIText
             text='Sohum'
@@ -28,7 +30,7 @@ function App() {
       </div>
       
       {/* Sudoku Section */}
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 20px', position: 'relative' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 20px', position: 'relative', paddingTop: '104px' }}>
         <Sudoku4x4 onGameComplete={handleSudokuComplete} />
       </div>
 
@@ -56,7 +58,7 @@ function App() {
           <div 
             style={{ 
               position: 'absolute', 
-              top: '20px', 
+              bottom: '20px', 
               right: '20px', 
               zIndex: 10,
               backgroundColor: 'rgba(0,0,0,0.5)',
