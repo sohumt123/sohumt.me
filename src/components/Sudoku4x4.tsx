@@ -77,41 +77,43 @@ export default function Sudoku4x4({ onGameComplete }: Sudoku4x4Props) {
     const isCompleteGrid = isComplete;
     
     let backgroundColor = '#ffffff';
-    if (isPrefilled) backgroundColor = '#f8fafc';
-    else if (isInvalid) backgroundColor = '#fee2e2';
-    else if (isSelected) backgroundColor = '#e0f2fe';
-    else if (isCompleteGrid) backgroundColor = '#ecfdf5';
+    if (isPrefilled) backgroundColor = '#ffffff';
+    else if (isInvalid) backgroundColor = '#ffebee';
+    else if (isSelected) backgroundColor = '#fff3cd';
+    else if (isCompleteGrid) backgroundColor = '#fce4ec';
     
     return {
-      width: '60px',
-      height: '60px',
-      border: '1px solid #e2e8f0',
+      width: '40px',
+      height: '40px',
+      border: '1px solid #000000',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontSize: '24px',
-      fontWeight: '600',
-      fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif",
+      fontSize: '20px',
+      fontWeight: '700',
+      fontFamily: "'Arial', sans-serif",
       cursor: isPrefilled || isComplete ? 'default' : 'pointer',
       backgroundColor,
-      borderTop: row === 2 ? '2px solid #334155' : '1px solid #e2e8f0',
-      borderLeft: col === 2 ? '2px solid #334155' : '1px solid #e2e8f0',
-      borderRight: col === 3 ? '2px solid #334155' : '1px solid #e2e8f0',
-      borderBottom: row === 3 ? '2px solid #334155' : '1px solid #e2e8f0',
-      transition: 'all 0.2s ease',
-      color: isPrefilled ? '#64748b' : '#0f172a'
+      borderTop: row === 2 ? '3px solid #000000' : '1px solid #000000',
+      borderLeft: col === 2 ? '3px solid #000000' : '1px solid #000000',
+      borderRight: col === 3 ? '3px solid #000000' : '1px solid #000000',
+      borderBottom: row === 3 ? '3px solid #000000' : '1px solid #000000',
+      color: '#000000'
     };
   };
 
   return (
     <div style={{ textAlign: 'center' }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+      `}</style>
       <h2 style={{ 
-        fontSize: '32px', 
-        fontWeight: '700', 
+        fontSize: '48px', 
+        fontWeight: '400', 
         marginBottom: '40px', 
         color: '#1e293b',
-        fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif",
-        letterSpacing: '-0.025em'
+        fontFamily: "'Monsieur La Doulaise', cursive",
+        letterSpacing: '0.02em'
       }}>
         Daily seed-generated puzzle
       </h2>
@@ -129,11 +131,8 @@ export default function Sudoku4x4({ onGameComplete }: Sudoku4x4Props) {
       
       <div style={{ 
         display: 'inline-block', 
-        border: '2px solid #334155',
-        borderRadius: '8px',
+        border: '3px solid #000000',
         backgroundColor: '#ffffff',
-        padding: '8px',
-        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
         position: 'relative',
         zIndex: 3
       }}>
