@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { generateDailyPuzzle, checkWin, isValidMove, type Grid } from '../utils/sudoku4x4';
 
-export default function Sudoku4x4() {
+interface Sudoku4x4Props {
+  onGameComplete?: () => void;
+}
+
+export default function Sudoku4x4({ onGameComplete }: Sudoku4x4Props) {
   // Generate puzzle once on component mount
   const { puzzle: initialPuzzle } = useMemo(() => 
     generateDailyPuzzle('medium'), []
@@ -41,7 +45,11 @@ export default function Sudoku4x4() {
           gridRow.map((cell, c) => (r === row && c === col) ? num : cell)
         );
         setGrid(newGrid);
-        setIsComplete(checkWin(newGrid));
+        const gameWon = checkWin(newGrid);
+        setIsComplete(gameWon);
+        if (gameWon && onGameComplete) {
+          onGameComplete();
+        }
         setInvalidMove(null);
       } else {
         setInvalidMove({ row, col });
@@ -55,7 +63,7 @@ export default function Sudoku4x4() {
       setIsComplete(false);
       setInvalidMove(null);
     }
-  }, [selectedCell, grid, initialCells, isComplete]);
+  }, [selectedCell, grid, initialCells, isComplete, onGameComplete]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -105,7 +113,7 @@ export default function Sudoku4x4() {
         fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif",
         letterSpacing: '-0.025em'
       }}>
-        Daily-seed generated puzzle
+        Daily seed-generated puzzle
       </h2>
       
       {isComplete && (
@@ -116,7 +124,6 @@ export default function Sudoku4x4() {
           marginBottom: '24px',
           fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif"
         }}>
-          ✓ Completed!
         </div>
       )}
       
@@ -126,7 +133,9 @@ export default function Sudoku4x4() {
         borderRadius: '8px',
         backgroundColor: '#ffffff',
         padding: '8px',
-        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+        position: 'relative',
+        zIndex: 3
       }}>
         {grid.map((row, rowIndex) => (
           <div key={rowIndex} style={{ display: 'flex' }}>
