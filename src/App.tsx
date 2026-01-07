@@ -3,6 +3,7 @@ import ASCIIText from './components/ASCIIText'
 import Sudoku4x4 from './components/Sudoku4x4'
 import Hyperspeed from './components/Hyperspeed'
 import Header from './components/Header'
+import GlobalPixelExplosion from './components/GlobalPixelExplosion'
 
 function App() {
   const [showHyperspeed, setShowHyperspeed] = useState(false)
@@ -18,6 +19,7 @@ function App() {
   return (
     <div>
       <Header />
+      <GlobalPixelExplosion />
       {/* ASCII Text Section */}
       <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', paddingTop: '64px' }}>
         <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
