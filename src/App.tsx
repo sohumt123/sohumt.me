@@ -4,8 +4,13 @@ import Sudoku4x4 from './components/Sudoku4x4'
 import Hyperspeed from './components/Hyperspeed'
 import Header from './components/Header'
 import GlobalPixelExplosion from './components/GlobalPixelExplosion'
+import Me from './components/Me'
+import Jobs from './components/Jobs'
+
+type Page = 'home' | 'me' | 'jobs'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<Page>('home')
   const [showHyperspeed, setShowHyperspeed] = useState(false)
 
   const handleSudokuComplete = () => {
@@ -16,9 +21,21 @@ function App() {
     setShowHyperspeed(false)
   }
 
+  const navigateToPage = (page: Page) => {
+    setCurrentPage(page)
+  }
+
+  if (currentPage === 'me') {
+    return <Me onNavigate={navigateToPage} />
+  }
+
+  if (currentPage === 'jobs') {
+    return <Jobs onNavigate={navigateToPage} />
+  }
+
   return (
     <div>
-      <Header />
+      <Header onNavigate={navigateToPage} />
       <GlobalPixelExplosion />
       {/* ASCII Text Section */}
       <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', paddingTop: '64px' }}>
