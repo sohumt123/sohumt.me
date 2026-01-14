@@ -1,3 +1,4 @@
+// import React from 'react'
 import Header from './Header'
 
 type Page = 'home' | 'me' | 'jobs'
@@ -7,6 +8,7 @@ interface MeProps {
 }
 
 const Me = ({ onNavigate }: MeProps = {}) => {
+
   const navigateToPage = (page: Page) => {
     if (onNavigate) {
       onNavigate(page)
@@ -14,7 +16,14 @@ const Me = ({ onNavigate }: MeProps = {}) => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+    <div style={{ 
+      minHeight: '100vh', 
+      backgroundColor: 'white',
+      width: '100%',
+      position: 'relative',
+      top: 0,
+      left: 0
+    }}>
       <Header onNavigate={navigateToPage} />
       <div style={{ 
         paddingTop: '100px', 
@@ -22,7 +31,7 @@ const Me = ({ onNavigate }: MeProps = {}) => {
         alignItems: 'center', 
         justifyContent: 'center',
         minHeight: 'calc(100vh - 100px)',
-        fontFamily: '"Caveat Brush", cursive',
+        fontFamily: '"Gloria Hallelujah", cursive',
         fontSize: '3rem',
         color: '#333'
       }}>

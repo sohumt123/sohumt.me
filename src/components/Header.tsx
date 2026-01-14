@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '@fontsource/caveat-brush/index.css'
+import '@fontsource/gloria-hallelujah/index.css'
 
 type Page = 'home' | 'me' | 'jobs'
 
@@ -19,11 +19,30 @@ const Header = ({ onNavigate }: HeaderProps) => {
     const isClockwise = Math.random() > 0.5
     const spinClass = isClockwise ? 'spin360CW' : 'spin360CCW'
     setGoblinSpin(spinClass)
-    
+
     // Reset the animation after it completes
     setTimeout(() => {
       setGoblinSpin('')
     }, 500)
+  }
+
+  const playRandomGoblinSound = () => {
+    // 50% chance to play a sound
+    const randomChance = Math.random()
+    if (randomChance > 0.5) {
+      return
+    }
+
+    const sounds = [
+      '/goblin-noises/goblin-mimimi.mp3',
+      '/goblin-noises/goblin-laugh1.mp3',
+      '/goblin-noises/goblin-laugh2.mp3'
+    ]
+
+    const randomSound = sounds[Math.floor(Math.random() * sounds.length)]
+    const audio = new Audio(randomSound)
+    audio.volume = 0.4
+    audio.play().catch(err => console.error('Audio play failed:', err))
   }
 
   const goToHomepage = () => {
@@ -106,7 +125,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
       }}>
         <h1 
           style={{ 
-            fontFamily: '"Caveat Brush", cursive',
+            fontFamily: '"Gloria Hallelujah", cursive',
             fontSize: '2.2rem',
             color: '#000',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -150,9 +169,10 @@ const Header = ({ onNavigate }: HeaderProps) => {
             msUserSelect: 'none'
           }}
           className={goblinSpin}
+          onClick={playRandomGoblinSound}
           onMouseEnter={(e) => {
             if (!goblinSpin) {
-              (e.target as HTMLImageElement).style.animation = 'jiggle 0.3s ease-in-out infinite';
+              (e.target as HTMLImageElement).style.animation = 'jiggle 0.3s ease-in-out';
             }
           }}
           onMouseLeave={(e) => {
@@ -283,7 +303,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
             }}>
               <button 
                 style={{
-                  fontFamily: '"Caveat Brush", cursive',
+                  fontFamily: '"Gloria Hallelujah", cursive',
                   fontSize: '1.6rem',
                   color: '#000',
                   background: 'transparent',
@@ -316,7 +336,7 @@ const Header = ({ onNavigate }: HeaderProps) => {
             }}>
               <button 
                 style={{
-                  fontFamily: '"Caveat Brush", cursive',
+                  fontFamily: '"Gloria Hallelujah", cursive',
                   fontSize: '1.6rem',
                   color: '#000',
                   background: 'transparent',

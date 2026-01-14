@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource/caveat-brush": "^5.2.8",
+    "@fontsource/gloria-hallelujah": "^5.2.8",
     "@fontsource/permanent-marker": "^5.2.7",
     "@types/three": "^0.182.0",
     "aalib.js": "github:mir3z/aalib.js",

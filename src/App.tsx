@@ -34,7 +34,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'white', minHeight: '100vh' }}>
       <Header onNavigate={navigateToPage} />
       <GlobalPixelExplosion />
       {/* ASCII Text Section */}

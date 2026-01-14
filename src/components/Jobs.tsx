@@ -22,7 +22,7 @@ const Jobs = ({ onNavigate }: JobsProps = {}) => {
         alignItems: 'center', 
         justifyContent: 'center',
         minHeight: 'calc(100vh - 100px)',
-        fontFamily: '"Caveat Brush", cursive',
+        fontFamily: '"Gloria Hallelujah", cursive',
         fontSize: '3rem',
         color: '#333'
       }}>
